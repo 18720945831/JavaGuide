@@ -349,6 +349,18 @@ System.out.println(str2==str3);//false
 false
 true
 ```
+一个有意思的现象，下方代码在jdk1.7之后的运行结果为一个true，一个false，原因是"java"字符串在Java常量池初始化时已经加入，因此str2.intern() == str2执行结果为false。
+```java
+String str1 = new StringBuilder("计算机").append("软件").toString();
+System.out.println(str1.intern() == "计算机软件");
+String str2 = new StringBuilder("ja").append("va").toString();
+System.out.println(str2.intern() == str2);
+```
+**结果：**
+```
+true
+false
+```
 
 ### 4.3 8 种基本类型的包装类和常量池
 
